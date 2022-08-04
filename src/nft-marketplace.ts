@@ -33,6 +33,9 @@ export function handleItemListed(event: ItemListedEvent): void {
     itemListed.seller = event.params.seller
     activeItem.seller = event.params.seller
 
+    itemListed.nftAddress = event.params.nftAddress
+    activeItem.nftAddress = event.params.nftAddress
+
     itemListed.tokenId = event.params.tokenId
     activeItem.tokenId = event.params.tokenId
 
@@ -53,6 +56,7 @@ export function handleItemCancelled(event: ItemCancelledEvent): void {
         itemCancelled = new ItemCancelled(itemId)
     }
     itemCancelled.seller = event.params.seller
+    itemCancelled.nftAddress = event.params.nftAddress
     itemCancelled.tokenId = event.params.tokenId
 
     activeItem!.buyer = Address.fromString(DEAD_ADDRESS)
@@ -71,6 +75,7 @@ export function handleItemBought(event: ItemBoughtEvent): void {
         itemBought = new ItemBought(itemId)
     }
     itemBought.buyer = event.params.buyer
+    itemBought.nftAddress = event.params.nftAddress
     itemBought.tokenId = event.params.tokenId
 
     activeItem!.buyer = event.params.buyer
